@@ -1,25 +1,25 @@
 # RFP-Cap: Residual Feature Projection with Spatial Attention for Image Captioning
 
 <p align="center">
-  <strong>Official repository for the paper</strong><br>
+  <strong>Accepted at the 2027 IEEE Symposium Series on Computational Intelligence (IEEE SSCI 2027)</strong><br>
   <em>RFP-Cap: Residual Feature Projection with Spatial Attention for Image Captioning</em><br><br>
   Christian Arthur · Isanka Dissanayake · Raymond Halim · Farshid Hajati · Raymond Chiong
 </p>
-
 <p align="center">
+  <a href="https://attend.ieee.org/ssci-2027/"><img src="https://img.shields.io/badge/IEEE%20SSCI%202027-Accepted-brightgreen" alt="Accepted at IEEE SSCI 2027"></a>
   <img src="https://img.shields.io/badge/Method-Residual%20Projection%20%7C%20Spatial%20Attention-purple" alt="Method">
   <img src="https://img.shields.io/badge/Task-Assistive%20Image%20Captioning-green" alt="Task">
   <img src="https://img.shields.io/badge/Validation-VizWiz-blue" alt="Validation">
 </p>
 
----
+> **Publication status:** Accepted at [IEEE SSCI 2027](https://attend.ieee.org/ssci-2027/), Gold Coast, Australia, 14–17 February 2027. Proceedings details and a DOI will be added when available.
 
+---
 ## Overview
 
 This work presents **RFP-Cap**, an image-captioning architecture built around a residual feature-projection module placed before spatial attention. The method is designed to improve how high-dimensional visual features are transferred from the encoder to the language decoder.
 
 The architecture combines:
-
 - a spatial ResNet-50 encoder;
 - a dual-path residual feature-projection module;
 - additive spatial attention;
@@ -30,16 +30,13 @@ The architecture combines:
 Rather than passing the original ResNet region features directly into the attention-decoder stage, RFP-Cap first adapts them into a compact representation while preserving complementary encoder information through a learned residual path.
 
 ---
-
 ## Key Contributions
-
 1. A **dual-path residual feature-projection module** that adapts high-dimensional spatial visual features before caption generation.
 2. A **spatial attention mechanism** that dynamically selects caption-relevant image regions at each decoding step.
 3. A comparative evaluation across multiple convolutional, recurrent, attention-based, and transformer-based captioning architectures on VizWiz.
 4. An analysis of caption quality, qualitative failure modes, and spatial attention behaviour under challenging assistive-use imagery.
 
 ---
-
 ## RFP-Cap Architecture
 
 RFP-Cap preserves the spatial structure of the ResNet-50 feature map rather than collapsing the image into a single global vector.
@@ -96,7 +93,6 @@ B \times 49 \times 512
 $$
 
 ---
-
 ## Spatial Attention and Decoding
 
 RFP-Cap applies additive attention over the adapted region features.
@@ -135,7 +131,6 @@ The context vector is combined with the previous-token embedding and passed to a
 During optimization, the ground-truth token from the previous decoding step is provided as input. During inference, captions are generated using beam search with width five.
 
 ---
-
 ## Computational Motivation
 
 RFP-Cap reduces the dimensionality of each ResNet spatial region from:
@@ -181,7 +176,6 @@ where $T$ is the generated sequence length and $H$ is the decoder hidden dimensi
 The proposed design therefore moves repeated visual processing from the original 2,048-dimensional encoder space into a compact 512-dimensional representation.
 
 ---
-
 ## Experimental Setting
 
 Experiments are conducted on **VizWiz-Captions**, which contains images captured by blind or low-vision users under real assistive-use conditions.
@@ -217,7 +211,6 @@ The evaluated RFP-Cap configuration uses:
 | Inference | Beam search, width 5 |
 
 ---
-
 ## Performance
 
 RFP-Cap is evaluated against representative encoder-decoder configurations using BLEU-1 through BLEU-4, METEOR, and the CIDEr approximation retained from the original experiment.
@@ -235,7 +228,6 @@ RFP-Cap is evaluated against representative encoder-decoder configurations using
 RFP-Cap achieves the strongest **BLEU-3**, **BLEU-4**, and available **METEOR** results among the evaluated architectures. The comparison with ResNet-LSTM is particularly informative because both models already preserve spatial ResNet features and use attention-based recurrent decoding. The additional gain therefore indicates that feature adaptation before attention provides a measurable benefit beyond the spatial encoding and attention mechanisms already present.
 
 ---
-
 ## Qualitative Findings
 
 Qualitative evaluation shows that RFP-Cap performs well when the dominant object or interaction is visually salient.
@@ -248,7 +240,6 @@ Representative behaviours include:
 - spatial attention concentrated on foreground regions.
 
 The remaining errors are concentrated around:
-
 - text-heavy packaging;
 - fine-grained product identity;
 - rare or out-of-vocabulary concepts;
@@ -258,9 +249,7 @@ The remaining errors are concentrated around:
 Attention visualizations indicate that the decoder can focus on the correct foreground region even when the generated caption remains less specific than the reference description. This suggests that localization and fine-grained lexical identification remain distinct challenges in assistive image captioning.
 
 ---
-
 ## Main Findings
-
 - RFP-Cap achieves the highest BLEU-3 and BLEU-4 scores among the evaluated architectures.
 - RFP-Cap records the highest available METEOR score.
 - The proposed module improves BLEU-1 through BLEU-4 and METEOR over the closest ResNet-LSTM configuration.
@@ -270,8 +259,6 @@ Attention visualizations indicate that the decoder can focus on the correct fore
 - Fine-grained product recognition, embedded text, lexical coverage, and ambiguous scene interpretation remain open challenges.
 
 ---
-
-
 ## Authors
 
 - Christian Arthur
@@ -281,24 +268,21 @@ Attention visualizations indicate that the decoder can focus on the correct fore
 - Raymond Chiong
 
 ---
-
 ## Code Availability
 
-The complete implementation, model definitions, training scripts, evaluation code, preprocessing instructions, configuration files, and pretrained checkpoints will be released publicly **upon acceptance**.
-
-During peer review, this repository provides an anonymous overview of the proposed method, experimental configuration, and reported results.
+This repository accompanies the paper **accepted at IEEE SSCI 2027**. At present, the public repository contains the methodological overview, experimental configuration, and reported results. The implementation, training scripts, evaluation code, and pretrained checkpoints have **not yet been uploaded** to this repository. Availability information will be updated when these materials are released.
 
 ---
-
 ## Citation
 
-Citation information will be added upon acceptance.
+If you use this work, please cite the accepted paper as follows. The final IEEE Xplore citation, DOI, and page numbers will be added after publication.
 
 ```bibtex
-@inproceedings{rfpcap2027,
+@inproceedings{arthur2027rfpcap,
   title     = {RFP-Cap: Residual Feature Projection with Spatial Attention for Image Captioning},
   author    = {Arthur, Christian and Dissanayake, Isanka and Halim, Raymond and Hajati, Farshid and Chiong, Raymond},
-  booktitle = {To appear},
-  year      = {2027}
+  booktitle = {2027 IEEE Symposium Series on Computational Intelligence (SSCI)},
+  year      = {2027},
+  note      = {Accepted for presentation}
 }
 ```
